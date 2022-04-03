@@ -3,8 +3,8 @@ class Solution {
         int si=0;
         int ei=nums.length-1;
         
-        if(nums.length==1 && nums[0] == target)
-            return 0;
+        /*if(nums.length==1 && nums[0] == target)
+            return 0;*/
        
         while(si<=ei){
             int mid = (si+ei)/2;
