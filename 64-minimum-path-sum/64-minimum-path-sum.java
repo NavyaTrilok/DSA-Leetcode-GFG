@@ -37,6 +37,34 @@ class Solution {
                              
     }
     
+    public int tab(int n,int m,int[][] grid){
+        
+        int[][] dp = new int[n][m];
+        //int i,j;
+        
+           for (int i = n - 1; i >= 0; i--) {           //3
+      for (int j = m - 1; j >= 0; j--) {       //4
+        if (i == n - 1 && j == m - 1) {      //5
+          dp[i][j] = grid[i][j];
+        }
+        else if (i == n - 1) {          //6
+          dp[i][j] = grid[i][j] + dp[i][j + 1];
+        }
+        else if (j == m - 1) {               //7
+          dp[i][j] = grid[i][j] + dp[i + 1][j];
+        }
+        else {                               //8
+          int min = Math.min(dp[i + 1][j], dp[i][j + 1]);
+          dp[i][j] = grid[i][j] + min;
+        }
+      }
+    }
+        
+        return dp[0][0];
+                             
+    }
+    
+    
     public int minPathSum(int[][] grid) {
         
         int n=grid.length;
@@ -47,7 +75,9 @@ class Solution {
         
         //return rec(i,j,n,m,grid);
         
-        return rec_memo(i,j,n,m,grid,memo);
+       // return rec_memo(i,j,n,m,grid,memo);
+        
+        return tab(n,m,grid);
         
     }
 }
