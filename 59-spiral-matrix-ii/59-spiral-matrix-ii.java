@@ -1,36 +1,64 @@
 class Solution {
     public int[][] generateMatrix(int n) {
-        
+        int rmin = 0;
+        int rmax = n-1;
+        int cmin = 0;
+        int cmax = n-1;
+        int count=0;
+        int status=0;
         int[][] matrix = new int[n][n];
-        int top = 0, bottom = n - 1, left = 0, right = n - 1;
-        int num = 1;
-        int status = 0;
-        while (top <= bottom && left <= right) {
-            if (status % 4 == 0) {
-                for (int j = left; j <= right; j++) {
-                    matrix[top][j] = num++;
-                }
-                top++;
-            } else if (status % 4 == 1) {
-                for (int i = top; i <= bottom; i++) {
-                    matrix[i][right] = num++;
-                }
-                right--;
-            } else if (status % 4 == 2) {
-                for (int j = right; j >= left; j--) {
-                    matrix[bottom][j] = num++;
-                }
-                bottom--;
-            } else if (status % 4 == 3) {
-
-                for (int i = bottom; i >= top; i--) {
-                    matrix[i][left] = num++;
-                }
-                left++;
-            }
+        
+        while(rmin<=rmax&&cmin<=cmax){
+            
+        
+        if(status%4==0){
+            
+        
+        for(int i=cmin;i<=cmax;i++){
+            count++;
+            matrix[rmin][i]=count;
+            
+        }
+            rmin++;
+        }
+        
+            
+        else if(status%4==1){
+        
+        for(int j=rmin;j<=rmax;j++){
+            count++;
+            matrix[j][cmax]=count;
+            
+        }
+            cmax--;
+        }
+        
+            
+        else if(status%4==2){
+        
+        for(int i=cmax;i>=cmin;i--){
+            count++;
+            matrix[rmax][i]=count;
+            
+        }
+            rmax--;
+        }
+        
+            
+        else if(status%4==3){
+            
+        for(int j=rmax;j>=rmin;j--){
+            count++;
+            matrix[j][cmin]=count;
+            
+        }
+            cmin++;
+        }
+        
+            
             status++;
         }
-        return matrix;
         
+        return matrix;
     }
 }
