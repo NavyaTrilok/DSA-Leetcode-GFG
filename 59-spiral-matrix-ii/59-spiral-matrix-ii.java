@@ -9,54 +9,34 @@ class Solution {
         int[][] matrix = new int[n][n];
         
         while(rmin<=rmax&&cmin<=cmax){
+
+            for(int i=cmin;i<=cmax;i++){
+                count++;
+                matrix[rmin][i]=count;
             
-        
-        if(status%4==0){
-            
-        
-        for(int i=cmin;i<=cmax;i++){
-            count++;
-            matrix[rmin][i]=count;
-            
-        }
+            }
             rmin++;
-        }
-        
+    
+            for(int j=rmin;j<=rmax;j++){
+                count++;
+                matrix[j][cmax]=count;
             
-        else if(status%4==1){
-        
-        for(int j=rmin;j<=rmax;j++){
-            count++;
-            matrix[j][cmax]=count;
-            
-        }
+            }
             cmax--;
-        }
-        
             
-        else if(status%4==2){
-        
-        for(int i=cmax;i>=cmin;i--){
-            count++;
-            matrix[rmax][i]=count;
+            for(int i=cmax;i>=cmin;i--){
+                count++;
+                matrix[rmax][i]=count;
             
-        }
+            }
             rmax--;
-        }
-        
             
-        else if(status%4==3){
+            for(int j=rmax;j>=rmin;j--){
+                count++;
+                matrix[j][cmin]=count;
             
-        for(int j=rmax;j>=rmin;j--){
-            count++;
-            matrix[j][cmin]=count;
-            
-        }
+            }
             cmin++;
-        }
-        
-            
-            status++;
         }
         
         return matrix;
