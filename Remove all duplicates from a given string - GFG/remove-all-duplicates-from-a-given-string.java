@@ -34,11 +34,12 @@ class Solution {
        LinkedHashSet<Character> lhs = new LinkedHashSet<>();
         for(int i=0;i<str.length();i++)
             lhs.add(str.charAt(i));
-         
+   
         // print string after deleting duplicate elements
-        for(Character ch : lhs)
+        for(Character ch : lhs){
             nstr=nstr+ch;
-            
+            //System.out.println(nstr);
+        }
             
         return nstr;
             
