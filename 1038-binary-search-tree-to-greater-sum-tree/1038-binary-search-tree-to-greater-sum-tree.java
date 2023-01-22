@@ -24,9 +24,10 @@ class Solution {
         
         bstToGst(root.right);
         
-       // int od = root.val;
-        sum += root.val;
+        int od = root.val;
+        sum += od;
         root.val = sum;
+        
         
         
         bstToGst(root.left);
