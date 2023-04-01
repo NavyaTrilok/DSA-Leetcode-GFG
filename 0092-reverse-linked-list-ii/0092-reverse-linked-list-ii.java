@@ -10,21 +10,22 @@
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode dummy = new ListNode(0); // created dummy node
+        if(head == null || left == right) return head;
+        
+        ListNode dummy = new ListNode(0);
         dummy.next = head;
-        ListNode prev = dummy; // intialising prev pointer on dummy node
-        
-        for(int i = 0; i < left - 1; i++)
-            prev = prev.next; // adjusting the prev pointer on it's actual index
-        
-        ListNode curr = prev.next; // curr pointer will be just after prev
-        // reversing
-        for(int i = 0; i < right - left; i++){
-            ListNode forw = curr.next; // forw pointer will be after curr
-            curr.next = forw.next;
-            forw.next = prev.next;
-            prev.next = forw;
+        ListNode prev = dummy;
+        for(int i=1;i<left;i++){
+            prev = prev.next;
         }
+        ListNode curr = prev.next;
+        for(int j=left;j<right;j++){
+            ListNode next = curr.next;
+            curr.next = next.next;
+            next.next = prev.next;
+            prev.next = next;
+        }
+        
         return dummy.next;
     }
 }
