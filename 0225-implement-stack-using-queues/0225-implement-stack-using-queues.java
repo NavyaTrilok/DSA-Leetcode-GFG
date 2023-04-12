@@ -6,56 +6,48 @@ class MyStack {
     public MyStack() {
         mainQ = new ArrayDeque<>();
         helperQ = new ArrayDeque<>();
-        
     }
     
     public void push(int x) {
+       
+        while(mainQ.size() > 0){
+           helperQ.add(mainQ.remove()); 
+        }
+        
         mainQ.add(x);
+            
+        while(helperQ.size()!=0){
+            mainQ.add(helperQ.remove());
+        }
+        
+        
     }
     
     public int pop() {
-        if(mainQ.size()==0){
+        
+        if(mainQ.size()==0)
             return -1;
-        }
-        while(mainQ.size() > 1){
-           helperQ.add(mainQ.remove()); 
-        }
-        
         int rv = mainQ.remove();
-            
-        while(helperQ.size()!=0){
-            mainQ.add(helperQ.remove());
-        }
-        
         return rv;
+        
     }
     
     public int top() {
-            if(mainQ.size()==0){
+        
+        if(mainQ.size()==0)
             return -1;
-        }
-        while(mainQ.size() > 1){
-           helperQ.add(mainQ.remove()); 
-        }
         
-        int rv = mainQ.remove();
-        helperQ.add(rv);
-            
-        while(helperQ.size()!=0){
-            mainQ.add(helperQ.remove());
-        }
-        
+        int rv = mainQ.peek();
         return rv;
+        
     }
     
     public boolean empty() {
-        
-        if(mainQ.size()==0){
+         if(mainQ.size()==0){
             return true;
         }else{
             return false;
         }
-        
     }
 }
 
