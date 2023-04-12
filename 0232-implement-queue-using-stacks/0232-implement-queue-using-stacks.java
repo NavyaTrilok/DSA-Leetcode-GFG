@@ -1,55 +1,64 @@
 class MyQueue {
-    
+
     Stack<Integer> mainS;
     Stack<Integer> helperS;
-    
     public MyQueue() {
-         mainS = new Stack<>();
-         helperS = new Stack<>();
+      mainS = new Stack<>();
+      helperS = new Stack<>();
     }
     
     public void push(int x) {
-        
-        while(mainS.size()!=0){
-            int rv = mainS.pop();
-            helperS.push(rv);
-        }
         mainS.push(x);
-        
-        while(helperS.size()!=0){
-            int rv = helperS.pop();
-            mainS.push(rv);
-        }
-        
     }
     
     public int pop() {
-        if(mainS.size()==0){
+        
+         if(mainS.size()==0){
             return -1;
-        }else{
-            int rv = mainS.pop();
-            return rv;
         }
+        
+        while(mainS.size()>1){
+            int rv = mainS.pop();
+            helperS.push(rv);
+        }
+        
+        int rv = mainS.pop();
+        
+        while(helperS.size()!=0){
+            int arv = helperS.pop();
+            mainS.push(arv);
+        }
+        
+        return rv;
     }
     
     public int peek() {
-        
-          if(mainS.size()==0){
+        int rv = 0;
+        if(mainS.size()==0){
             return -1;
         }else{
-            int rv = mainS.peek();
-            return rv;
+                    while(mainS.size()>1){
+                        rv = mainS.pop();
+                        helperS.push(rv);
+                    }
+
+                rv = mainS.peek();
+
+                while(helperS.size()!=0){
+                    int arv = helperS.pop();
+                    mainS.push(arv);
+                }
         }
+       
         
+        return rv;
     }
     
     public boolean empty() {
-          if(mainS.size()==0){
+        if(mainS.size()==0)
             return true;
-        }else{
+        else
             return false;
-        }
-        
     }
 }
 
