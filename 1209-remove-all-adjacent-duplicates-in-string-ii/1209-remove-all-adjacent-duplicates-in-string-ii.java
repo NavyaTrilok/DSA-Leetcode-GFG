@@ -12,9 +12,13 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         while(!Master.isEmpty()){
             int top[] = Master.pop();
-            while(top[1] --> 0)
+            while(top[1] -- > 0)
                 sb.append((char)top[0]);
         }
         return sb.reverse().toString();
     }
 }
+
+
+/*https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/solutions/2012425/FULLY-VISUALLY-EXPLAINED-oror-O(N*K)-greater-O(N)-+-MEME/
+*/
