@@ -7,8 +7,8 @@ class Solution {
         int top = 0, left = 0, bottom = m-1, right = n-1;
         while(top<=bottom && left<=right){
             if(status%4==0){
-                for(int j = left; j<=right; j++){
-                    al.add(matrix[top][j]);
+                for(int i = left; i<=right; i++){
+                    al.add(matrix[top][i]);
                 }
                 top++;
             }else if(status%4==1){
@@ -17,13 +17,13 @@ class Solution {
                 }
                 right--;
             }else if(status%4==2){
-                for(int j = right; j >= left; j--){
-                    al.add(matrix[bottom][j]);
+                for(int i = right; i >= left; i--){
+                    al.add(matrix[bottom][i]);
                 }
                 bottom--;
             }else if(status%4==3){
-                for(int j = bottom; j >= top; j--){
-                    al.add(matrix[j][left]);
+                for(int i = bottom; i >= top; i--){
+                    al.add(matrix[i][left]);
                 }
                 left++;
             }
