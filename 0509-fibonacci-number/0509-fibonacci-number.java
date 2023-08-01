@@ -1,8 +1,15 @@
 class Solution {
     public int fib(int n) {
-        
-        if(n == 0 || n ==1) return n;
-        return fib(n-1) + fib(n-2); 
-        
+        int num1=0;
+        int num2=1;
+        int counter = 0;
+        int num3=0;
+        while(counter!=n){
+            num3 = num1 + num2;
+            num1 = num2;
+            num2 = num3;
+            counter++;
+        }
+        return num1;
     }
 }
